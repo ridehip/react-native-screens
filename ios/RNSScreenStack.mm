@@ -420,9 +420,9 @@
 - (void)setPushViewControllers:(NSArray<UIViewController *> *)controllers
 {
   // when there is no change we return immediately
-  if ([_controller.viewControllers isEqualToArray:controllers]) {
-    return;
-  }
+  // if ([_controller.viewControllers isEqualToArray:controllers]) {
+  //   return;
+  // }
 
   // if view controller is not yet attached to window we skip updates now and run them when view
   // is attached
@@ -508,6 +508,8 @@
   } else {
     // change wasn't on the top of the stack. We don't need animation.
     [_controller setViewControllers:controllers animated:NO];
+    auto screenController = (RNSScreen *)top;
+    [screenController resetViewToScreen];
   }
 }
 
